@@ -453,7 +453,6 @@ var FeatureModule = /** @class */ (function () {
     }
     FeatureModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _commit_history_commit_history_module__WEBPACK_IMPORTED_MODULE_3__["CommitHistoryModule"],
