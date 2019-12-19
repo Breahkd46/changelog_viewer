@@ -1,0 +1,12 @@
+<div class="form-field-main">
+  <mat-form-field>
+    <input matInput placeholder="GitHub Username" [(ngModel)]="githubUserName" >
+  </mat-form-field>
+  <b>/</b>
+  <mat-form-field>
+    <input matInput placeholder="GitHub repo" [(ngModel)]="githubRepo" >
+  </mat-form-field>
+  <mat-icon aria-hidden="false">
+    <a (click)="onClickSearch()">search</a>
+  </mat-icon>
+</div>

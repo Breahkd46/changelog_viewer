@@ -1,0 +1,4 @@
+<app-commit-form (githubUserNameToChild)="updateUserName($event)" (githubRepoToChild)="updateRepo($event)"></app-commit-form>
+
+<app-commit-table [githubRepo]="githubRepo"  [githubUser]="githubUserName"></app-commit-table>
+

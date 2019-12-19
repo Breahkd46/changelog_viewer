@@ -1,0 +1,45 @@
+.commit-item {
+  width: 33%;
+  margin-right: 10%;
+  margin-left: 30%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  height: 4%;
+
+}
+
+.mat-card-content{
+  padding-top: 2.5%;
+  text-align: inherit;
+  margin-left: 80px;
+  width: 78%;
+}
+
+.mat-card-image{
+  width: 8%;
+  height: 12%;
+  margin-left: -12%;
+  margin-top: 10px;
+  padding-top: 2%;
+}
+
+.author-login{
+  margin-top:-13%;
+  width: 15%;
+  margin-left: 2%;
+  font-size: 10px;
+}
+
+.commit-date {
+  margin-top:1%;
+  margin-left: 2%;
+  font-size: 10px;
+}
+
+.commit-message {
+  margin-left: 34%;
+  margin-top: -8%;
+  font-size: 9px;
+  width: 50%;
+}
+
