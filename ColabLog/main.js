@@ -41,7 +41,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Renseignez vos informations</h1>\n<form>\n\t<div>\n\t\t<label for=\"nameUser\">Nom d'utilisateur : </label>\n    \t<input type=\"textUser\" name=\"name\" id=\"name\" required>\n\t</div>\n\t<div>\n\t\t<label for=\"urlRepo\">URL du repository : </label>\n    \t<input type=\"textUrl\" name=\"url\" id=\"url\" required>\n\t</div>\n</form>\n<app-container></app-container>\n"
+module.exports = "<app-container></app-container>\n"
 
 /***/ }),
 
@@ -61,7 +61,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
-        this.title = 'Collablog';
+        this.title = 'ColabLog';
     }
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -141,7 +141,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-commit-table></app-commit-table>\n"
+module.exports = "<app-commit-form (githubUserNameToChild)=\"updateUserName($event)\" (githubRepoToChild)=\"updateRepo($event)\"></app-commit-form>\n\n<app-commit-table [githubRepo]=\"githubRepo\"  [githubUser]=\"githubUserName\"></app-commit-table>\n\n"
 
 /***/ }),
 
@@ -163,6 +163,14 @@ var ContainerComponent = /** @class */ (function () {
     function ContainerComponent() {
     }
     ContainerComponent.prototype.ngOnInit = function () {
+        this.githubUserName = '';
+        this.githubRepo = '';
+    };
+    ContainerComponent.prototype.updateUserName = function ($event) {
+        this.githubUserName = $event;
+    };
+    ContainerComponent.prototype.updateRepo = function ($event) {
+        this.githubRepo = $event;
     };
     ContainerComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -194,6 +202,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _feature_features_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../feature/features.module */ "./src/app/feature/features.module.ts");
 /* harmony import */ var _containers_containers_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./containers/containers.component */ "./src/app/core/containers/containers.component.ts");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+
 
 
 
@@ -208,6 +218,7 @@ var CoreModule = /** @class */ (function () {
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _feature_features_module__WEBPACK_IMPORTED_MODULE_3__["FeatureModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["BrowserAnimationsModule"]
             ],
             exports: [
                 _containers_containers_component__WEBPACK_IMPORTED_MODULE_4__["ContainerComponent"]
@@ -215,6 +226,129 @@ var CoreModule = /** @class */ (function () {
         })
     ], CoreModule);
     return CoreModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/feature/commit-form/commit-form.module.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/feature/commit-form/commit-form.module.ts ***!
+  \***********************************************************/
+/*! exports provided: CommitFormModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CommitFormModule", function() { return CommitFormModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _components_commit_form_commit_form_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/commit-form/commit-form.component */ "./src/app/feature/commit-form/components/commit-form/commit-form.component.ts");
+/* harmony import */ var _share_share_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../share/share.module */ "./src/app/share/share.module.ts");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+
+
+
+
+
+
+var CommitFormModule = /** @class */ (function () {
+    function CommitFormModule() {
+    }
+    CommitFormModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            declarations: [_components_commit_form_commit_form_component__WEBPACK_IMPORTED_MODULE_3__["CommitFormComponent"]],
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+                _share_share_module__WEBPACK_IMPORTED_MODULE_4__["ShareModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["BrowserAnimationsModule"]
+            ],
+            exports: [_components_commit_form_commit_form_component__WEBPACK_IMPORTED_MODULE_3__["CommitFormComponent"]]
+        })
+    ], CommitFormModule);
+    return CommitFormModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/feature/commit-form/components/commit-form/commit-form.component.css":
+/*!**************************************************************************************!*\
+  !*** ./src/app/feature/commit-form/components/commit-form/commit-form.component.css ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".form-field-main{\n\tmargin-left: 10%;\n}\n\n.mat-form-field{\n\twidth: 44%;\n}\n\na{\n  cursor: pointer;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZmVhdHVyZS9jb21taXQtZm9ybS9jb21wb25lbnRzL2NvbW1pdC1mb3JtL2NvbW1pdC1mb3JtLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Q0FDQyxnQkFBZ0I7QUFDakI7O0FBRUE7Q0FDQyxVQUFVO0FBQ1g7O0FBRUE7RUFDRSxlQUFlO0FBQ2pCIiwiZmlsZSI6InNyYy9hcHAvZmVhdHVyZS9jb21taXQtZm9ybS9jb21wb25lbnRzL2NvbW1pdC1mb3JtL2NvbW1pdC1mb3JtLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZm9ybS1maWVsZC1tYWlue1xuXHRtYXJnaW4tbGVmdDogMTAlO1xufVxuXG4ubWF0LWZvcm0tZmllbGR7XG5cdHdpZHRoOiA0NCU7XG59XG5cbmF7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn1cbiJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/feature/commit-form/components/commit-form/commit-form.component.html":
+/*!***************************************************************************************!*\
+  !*** ./src/app/feature/commit-form/components/commit-form/commit-form.component.html ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"form-field-main\">\n  <mat-form-field>\n    <input matInput placeholder=\"GitHub Username\" [(ngModel)]=\"githubUserName\" >\n  </mat-form-field>\n  <b>/</b>\n  <mat-form-field>\n    <input matInput placeholder=\"GitHub repo\" [(ngModel)]=\"githubRepo\" >\n  </mat-form-field>\n  <mat-icon aria-hidden=\"false\">\n    <a (click)=\"onClickSearch()\">search</a>\n  </mat-icon>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/feature/commit-form/components/commit-form/commit-form.component.ts":
+/*!*************************************************************************************!*\
+  !*** ./src/app/feature/commit-form/components/commit-form/commit-form.component.ts ***!
+  \*************************************************************************************/
+/*! exports provided: CommitFormComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CommitFormComponent", function() { return CommitFormComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var CommitFormComponent = /** @class */ (function () {
+    function CommitFormComponent() {
+        this.githubUserNameToChild = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.githubRepoToChild = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+    }
+    CommitFormComponent.prototype.ngOnInit = function () {
+        this.githubUserName = '';
+        this.githubRepo = '';
+    };
+    CommitFormComponent.prototype.saveRepo = function (repo) {
+        this.githubRepoToChild.emit(repo);
+    };
+    CommitFormComponent.prototype.saveCommitUserName = function (userName) {
+        this.githubUserNameToChild.emit(userName);
+    };
+    CommitFormComponent.prototype.onClickSearch = function () {
+        if (this.githubRepo !== '' && this.githubUserName !== '') {
+            this.saveCommitUserName(this.githubUserName);
+            this.saveRepo(this.githubRepo);
+        }
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], CommitFormComponent.prototype, "githubUserNameToChild", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], CommitFormComponent.prototype, "githubRepoToChild", void 0);
+    CommitFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-commit-form',
+            template: __webpack_require__(/*! ./commit-form.component.html */ "./src/app/feature/commit-form/components/commit-form/commit-form.component.html"),
+            styles: [__webpack_require__(/*! ./commit-form.component.css */ "./src/app/feature/commit-form/components/commit-form/commit-form.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], CommitFormComponent);
+    return CommitFormComponent;
 }());
 
 
@@ -272,7 +406,7 @@ var CommitHistoryModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".commit-item {\n  max-width: 80%;\n  margin-right: 10%;\n  margin-left: 10%;\n  margin-bottom: 10px;\n  margin-top: 10px;\n}\n\n.mat-card-content{\n  padding-top: 2.5%;\n  text-align: inherit;\n  margin-left: 80px;\n  width: 78%;\n}\n\n.mat-card-image{\n  width: 6%;\n  height: 6%;\n  margin-left: 0%;\n  margin-top: 2%;\n}\n\n.author-login{\n  margin-top:-10%;\n  margin-left: 7%;\n\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZmVhdHVyZS9jb21taXQtaGlzdG9yeS9jb21wb25lbnQvY29tbWl0LWl0ZW0vY29tbWl0LWl0ZW0uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGNBQWM7RUFDZCxpQkFBaUI7RUFDakIsZ0JBQWdCO0VBQ2hCLG1CQUFtQjtFQUNuQixnQkFBZ0I7QUFDbEI7O0FBRUE7RUFDRSxpQkFBaUI7RUFDakIsbUJBQW1CO0VBQ25CLGlCQUFpQjtFQUNqQixVQUFVO0FBQ1o7O0FBRUE7RUFDRSxTQUFTO0VBQ1QsVUFBVTtFQUNWLGVBQWU7RUFDZixjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsZUFBZTtFQUNmLGVBQWU7O0FBRWpCIiwiZmlsZSI6InNyYy9hcHAvZmVhdHVyZS9jb21taXQtaGlzdG9yeS9jb21wb25lbnQvY29tbWl0LWl0ZW0vY29tbWl0LWl0ZW0uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb21taXQtaXRlbSB7XG4gIG1heC13aWR0aDogODAlO1xuICBtYXJnaW4tcmlnaHQ6IDEwJTtcbiAgbWFyZ2luLWxlZnQ6IDEwJTtcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcbiAgbWFyZ2luLXRvcDogMTBweDtcbn1cblxuLm1hdC1jYXJkLWNvbnRlbnR7XG4gIHBhZGRpbmctdG9wOiAyLjUlO1xuICB0ZXh0LWFsaWduOiBpbmhlcml0O1xuICBtYXJnaW4tbGVmdDogODBweDtcbiAgd2lkdGg6IDc4JTtcbn1cblxuLm1hdC1jYXJkLWltYWdle1xuICB3aWR0aDogNiU7XG4gIGhlaWdodDogNiU7XG4gIG1hcmdpbi1sZWZ0OiAwJTtcbiAgbWFyZ2luLXRvcDogMiU7XG59XG5cbi5hdXRob3ItbG9naW57XG4gIG1hcmdpbi10b3A6LTEwJTtcbiAgbWFyZ2luLWxlZnQ6IDclO1xuXG59XG4iXX0= */"
+module.exports = ".commit-item {\n  width: 33%;\n  margin-right: 10%;\n  margin-left: 30%;\n  margin-bottom: 10px;\n  margin-top: 10px;\n  height: 4%;\n\n}\n\n.mat-card-content{\n  padding-top: 2.5%;\n  text-align: inherit;\n  margin-left: 80px;\n  width: 78%;\n}\n\n.mat-card-image{\n  width: 8%;\n  height: 12%;\n  margin-left: -12%;\n  margin-top: 10px;\n  padding-top: 2%;\n}\n\n.author-login{\n  margin-top:-13%;\n  width: 15%;\n  margin-left: 2%;\n  font-size: 10px;\n}\n\n.commit-date {\n  margin-top:1%;\n  margin-left: 2%;\n  font-size: 10px;\n}\n\n.commit-message {\n  margin-left: 34%;\n  margin-top: -8%;\n  font-size: 9px;\n  width: 50%;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZmVhdHVyZS9jb21taXQtaGlzdG9yeS9jb21wb25lbnQvY29tbWl0LWl0ZW0vY29tbWl0LWl0ZW0uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixpQkFBaUI7RUFDakIsZ0JBQWdCO0VBQ2hCLG1CQUFtQjtFQUNuQixnQkFBZ0I7RUFDaEIsVUFBVTs7QUFFWjs7QUFFQTtFQUNFLGlCQUFpQjtFQUNqQixtQkFBbUI7RUFDbkIsaUJBQWlCO0VBQ2pCLFVBQVU7QUFDWjs7QUFFQTtFQUNFLFNBQVM7RUFDVCxXQUFXO0VBQ1gsaUJBQWlCO0VBQ2pCLGdCQUFnQjtFQUNoQixlQUFlO0FBQ2pCOztBQUVBO0VBQ0UsZUFBZTtFQUNmLFVBQVU7RUFDVixlQUFlO0VBQ2YsZUFBZTtBQUNqQjs7QUFFQTtFQUNFLGFBQWE7RUFDYixlQUFlO0VBQ2YsZUFBZTtBQUNqQjs7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixlQUFlO0VBQ2YsY0FBYztFQUNkLFVBQVU7QUFDWiIsImZpbGUiOiJzcmMvYXBwL2ZlYXR1cmUvY29tbWl0LWhpc3RvcnkvY29tcG9uZW50L2NvbW1pdC1pdGVtL2NvbW1pdC1pdGVtLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29tbWl0LWl0ZW0ge1xuICB3aWR0aDogMzMlO1xuICBtYXJnaW4tcmlnaHQ6IDEwJTtcbiAgbWFyZ2luLWxlZnQ6IDMwJTtcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcbiAgbWFyZ2luLXRvcDogMTBweDtcbiAgaGVpZ2h0OiA0JTtcblxufVxuXG4ubWF0LWNhcmQtY29udGVudHtcbiAgcGFkZGluZy10b3A6IDIuNSU7XG4gIHRleHQtYWxpZ246IGluaGVyaXQ7XG4gIG1hcmdpbi1sZWZ0OiA4MHB4O1xuICB3aWR0aDogNzglO1xufVxuXG4ubWF0LWNhcmQtaW1hZ2V7XG4gIHdpZHRoOiA4JTtcbiAgaGVpZ2h0OiAxMiU7XG4gIG1hcmdpbi1sZWZ0OiAtMTIlO1xuICBtYXJnaW4tdG9wOiAxMHB4O1xuICBwYWRkaW5nLXRvcDogMiU7XG59XG5cbi5hdXRob3ItbG9naW57XG4gIG1hcmdpbi10b3A6LTEzJTtcbiAgd2lkdGg6IDE1JTtcbiAgbWFyZ2luLWxlZnQ6IDIlO1xuICBmb250LXNpemU6IDEwcHg7XG59XG5cbi5jb21taXQtZGF0ZSB7XG4gIG1hcmdpbi10b3A6MSU7XG4gIG1hcmdpbi1sZWZ0OiAyJTtcbiAgZm9udC1zaXplOiAxMHB4O1xufVxuXG4uY29tbWl0LW1lc3NhZ2Uge1xuICBtYXJnaW4tbGVmdDogMzQlO1xuICBtYXJnaW4tdG9wOiAtOCU7XG4gIGZvbnQtc2l6ZTogOXB4O1xuICB3aWR0aDogNTAlO1xufVxuXG4iXX0= */"
 
 /***/ }),
 
@@ -283,7 +417,7 @@ module.exports = ".commit-item {\n  max-width: 80%;\n  margin-right: 10%;\n  mar
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card class=\"commit-item\">\n  <mat-card-header>\n    <div mat-card-avatar class=\"example-header-image\"></div>\n\n    <mat-card-subtitle>\n      <img mat-card-image src={{commit.author.avatar_url}}>\n      <div class=\"author-login\">\n          {{commit.author.login}}\n      </div>\n\n      <mat-card-title *ngIf=\"commit.commit.message.length >= 60; then MessageUpTo60 else MessageLessThan60\"></mat-card-title>\n    </mat-card-subtitle>\n  </mat-card-header>\n  <mat-card-content>\n  </mat-card-content>\n  <mat-card-actions>\n    <a mat-raised-button href={{commit.html_url}} target=\"_blank\">Go to commit view</a>\n  </mat-card-actions>\n</mat-card>\n\n<ng-template #MessageUpTo60>{{commit.commit.message.substring(0,61)}} [...]</ng-template>\n<ng-template #MessageLessThan60>{{commit.commit.message}}</ng-template>\n"
+module.exports = "<!-- <mat-card class=\"commit-item\">\n  <mat-card-header>\n    <div mat-card-avatar class=\"example-header-image\"></div>\n\n    <mat-card-subtitle>\n      <img mat-card-image src={{commit.author.avatar_url}}>\n      <div class=\"author-login\">\n          {{commit.author.login}}\n      </div>\n\n      <mat-card-title *ngIf=\"commit.commit.message.length >= 60; then MessageUpTo60 else MessageLessThan60\"></mat-card-title>\n    </mat-card-subtitle>\n  </mat-card-header>\n  <mat-card-content>\n  </mat-card-content>\n  <mat-card-actions>\n    <a mat-raised-button href={{commit.html_url}} target=\"_blank\">Go to commit view</a>\n  </mat-card-actions>\n</mat-card>\n\n<ng-template #MessageUpTo60>{{commit.commit.message.substring(0,61)}} [...]</ng-template>\n<ng-template #MessageLessThan60>{{commit.commit.message}}</ng-template> -->\n\n\n<a href={{commit.html_url}} target=\"_blank\"><mat-card class=\"commit-item\">\n  <mat-card-header>\n    <div mat-card-avatar class=\"example-header-image\"></div>\n\n    <mat-card-subtitle>\n      <img mat-card-image src={{commit.author.avatar_url}}>\n      <div class=\"author-login\">\n        {{commit.author.login}}\n      </div>\n      <div class=\"commit-date\">\n        {{commit.commit.author.date}}\n      </div>\n      <mat-card-title>\n        <div  *ngIf=\"commit.commit.message.length >= 60; then MessageUpTo60 else MessageLessThan60\">\n        </div>\n      </mat-card-title>\n    </mat-card-subtitle>\n  </mat-card-header>\n</mat-card>\n</a>\n\n<ng-template #MessageUpTo60>\n  <div class=\"commit-message\">\n    {{commit.commit.message.substring(0,61)}} [...]\n  </div>\n</ng-template>\n<ng-template #MessageLessThan60>\n  <div class=\"commit-message\">\n   {{commit.commit.message}}\n  </div>\n</ng-template>\n"
 
 /***/ }),
 
@@ -305,7 +439,6 @@ var CommitItemComponent = /** @class */ (function () {
     function CommitItemComponent() {
     }
     CommitItemComponent.prototype.ngOnInit = function () {
-        console.log(this.commit);
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
@@ -344,7 +477,7 @@ module.exports = ".mat-spinner {\n  position: relative;\n  margin-left: 50%;\n  
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<app-commit-item *ngFor=\"let commit of commitList\" [commit] = commit></app-commit-item>\n"
+module.exports = "<app-commit-item *ngFor=\"let commit of commitList\" [commit] = commit></app-commit-item>\n\n<!-- <app-commit-item></app-commit-item> -->\n"
 
 /***/ }),
 
@@ -369,14 +502,25 @@ var CommitTableComponent = /** @class */ (function () {
         this.serviceCommit = serviceCommit;
     }
     CommitTableComponent.prototype.ngOnInit = function () {
+        //this.getCommitList();
+    };
+    CommitTableComponent.prototype.ngOnChanges = function (changes) {
         this.getCommitList();
     };
     CommitTableComponent.prototype.getCommitList = function () {
         var _this = this;
-        this.serviceCommit.getCommitList("ColabLog46", "changelog_viewer", 1).subscribe(function (data) {
+        this.serviceCommit.getCommitList(this.githubUser, this.githubRepo, 1).subscribe(function (data) {
             _this.commitList = data;
         });
     };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], CommitTableComponent.prototype, "githubRepo", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], CommitTableComponent.prototype, "githubUser", void 0);
     CommitTableComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-commit-table',
@@ -442,7 +586,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _commit_history_commit_history_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./commit-history/commit-history.module */ "./src/app/feature/commit-history/commit-history.module.ts");
-/* harmony import */ var _share_share_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../share/share.module */ "./src/app/share/share.module.ts");
+/* harmony import */ var _commit_form_commit_form_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./commit-form/commit-form.module */ "./src/app/feature/commit-form/commit-form.module.ts");
+/* harmony import */ var _share_share_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../share/share.module */ "./src/app/share/share.module.ts");
+
 
 
 
@@ -456,10 +602,12 @@ var FeatureModule = /** @class */ (function () {
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _commit_history_commit_history_module__WEBPACK_IMPORTED_MODULE_3__["CommitHistoryModule"],
-                _share_share_module__WEBPACK_IMPORTED_MODULE_4__["ShareModule"]
+                _share_share_module__WEBPACK_IMPORTED_MODULE_5__["ShareModule"],
+                _commit_form_commit_form_module__WEBPACK_IMPORTED_MODULE_4__["CommitFormModule"],
             ],
             exports: [
-                _commit_history_commit_history_module__WEBPACK_IMPORTED_MODULE_3__["CommitHistoryModule"]
+                _commit_history_commit_history_module__WEBPACK_IMPORTED_MODULE_3__["CommitHistoryModule"],
+                _commit_form_commit_form_module__WEBPACK_IMPORTED_MODULE_4__["CommitFormModule"],
             ]
         })
     ], FeatureModule);
@@ -487,6 +635,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/card */ "./node_modules/@angular/material/esm5/card.es5.js");
 /* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm5/button.es5.js");
 /* harmony import */ var _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/progress-spinner */ "./node_modules/@angular/material/esm5/progress-spinner.es5.js");
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/form-field */ "./node_modules/@angular/material/esm5/form-field.es5.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/esm5/icon.es5.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+
+
+
+
 
 
 
@@ -503,14 +659,22 @@ var ShareModule = /** @class */ (function () {
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _angular_material_card__WEBPACK_IMPORTED_MODULE_4__["MatCardModule"],
+                _angular_material_icon__WEBPACK_IMPORTED_MODULE_9__["MatIconModule"],
                 _angular_material_button__WEBPACK_IMPORTED_MODULE_5__["MatButtonModule"],
                 _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_6__["MatProgressSpinnerModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"]
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
+                _angular_material_form_field__WEBPACK_IMPORTED_MODULE_7__["MatFormFieldModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_8__["MatInputModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormsModule"],
             ],
             exports: [
                 _angular_material_card__WEBPACK_IMPORTED_MODULE_4__["MatCardModule"],
                 _angular_material_button__WEBPACK_IMPORTED_MODULE_5__["MatButtonModule"],
                 _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_6__["MatProgressSpinnerModule"],
+                _angular_material_form_field__WEBPACK_IMPORTED_MODULE_7__["MatFormFieldModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_8__["MatInputModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormsModule"],
+                _angular_material_icon__WEBPACK_IMPORTED_MODULE_9__["MatIconModule"],
             ]
         })
     ], ShareModule);
