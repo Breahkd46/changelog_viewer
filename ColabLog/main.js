@@ -61,7 +61,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
-        this.title = 'Collablog';
+        this.title = 'ColabLog';
     }
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -202,6 +202,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _feature_features_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../feature/features.module */ "./src/app/feature/features.module.ts");
 /* harmony import */ var _containers_containers_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./containers/containers.component */ "./src/app/core/containers/containers.component.ts");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+
 
 
 
@@ -216,6 +218,7 @@ var CoreModule = /** @class */ (function () {
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _feature_features_module__WEBPACK_IMPORTED_MODULE_3__["FeatureModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["BrowserAnimationsModule"]
             ],
             exports: [
                 _containers_containers_component__WEBPACK_IMPORTED_MODULE_4__["ContainerComponent"]
@@ -244,6 +247,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _components_commit_form_commit_form_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/commit-form/commit-form.component */ "./src/app/feature/commit-form/components/commit-form/commit-form.component.ts");
 /* harmony import */ var _share_share_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../share/share.module */ "./src/app/share/share.module.ts");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+
 
 
 
@@ -258,6 +263,7 @@ var CommitFormModule = /** @class */ (function () {
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _share_share_module__WEBPACK_IMPORTED_MODULE_4__["ShareModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["BrowserAnimationsModule"]
             ],
             exports: [_components_commit_form_commit_form_component__WEBPACK_IMPORTED_MODULE_3__["CommitFormComponent"]]
         })
@@ -433,7 +439,6 @@ var CommitItemComponent = /** @class */ (function () {
     function CommitItemComponent() {
     }
     CommitItemComponent.prototype.ngOnInit = function () {
-        console.log(this.commit);
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
